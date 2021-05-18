@@ -1,0 +1,24 @@
+{
+  "name": "anime_news_crawler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "anime_corner_crawler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnHeung/anime_news_crawler.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnHeung/anime_news_crawler/issues"
+  },
+  "homepage": "https://github.com/AnHeung/anime_news_crawler#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cheerio": "^1.0.0-rc.9"
+  }
+}
