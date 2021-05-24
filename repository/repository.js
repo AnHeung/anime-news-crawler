@@ -14,9 +14,11 @@ const saveAnimationNewsCrawlerData = async (data) => {
         })
 }
 
-const getAnimationNewsCrawlerData = async () => {
+const getAnimationNewsCrawlerData = async (page,viewCount) => {
 
-    return Axios.get(KUMA_API_NEWS_URL)
+    const params = {page, viewCount}
+
+    return Axios.get(KUMA_API_NEWS_URL, params)
         .then(result => result.data)
         .catch(e => {
             console.error(`saveAnimationNewsCrawlerData 통신 에러 ${e}`)

@@ -2,6 +2,7 @@ const { getAllAniCornerDatas, getAnimeCornerData, getAniCornerDataToSelectDate }
 const { getToday } = require('./util/utils')
 const { saveAnimationNewsCrawlerData, getAnimationNewsCrawlerData } = require('./repository/repository')
 
+
 const crawlingTodayAnimationNews = async () => {
 
     try {

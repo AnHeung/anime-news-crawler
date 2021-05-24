@@ -3,6 +3,12 @@ const Axios = require('axios');
 const { ANIME_CORNER_WEEK_RANK_URL, ANIME_CORNER_BASE_URL } = require('./appConstant');
 const { getNoArr, dateToFormat } = require('./util/utils')
 
+const axiosCookieJarSupport = require('axios-cookiejar-support').default;
+const tough = require('tough-cookie');
+const cookieJar = new tough.CookieJar();
+
+axiosCookieJarSupport(Axios);
+
 const getAnimeCornerData = async (siteUrl) => {
 
     const $ = await getAnimeCornerCheerio(siteUrl)
@@ -100,10 +106,13 @@ getLastPage = async () => {
 }
 
 getAnimeCornerCheerio = async (url) => {
-    return Axios.get(url)
+    return Axios.get(url, {
+        jar: cookieJar,
+        withCredentials: true, // If true, send cookie stored in jar
+    })
         .then(res => cheerio.load(res.data, { ignoreWhitespace: true }))
         .catch(e => {
-            print(`getAnimeCornerCheerio 에러 ${e}`)
+            console.error(`getAnimeCornerCheerio 에러 ${e}`)
             return false
         })
 }
