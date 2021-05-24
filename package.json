@@ -4,6 +4,7 @@
   "description": "",
   "main": "anime_corner_crawler.js",
   "scripts": {
+    "debug": "nodemon api.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,7 +19,10 @@
   },
   "homepage": "https://github.com/AnHeung/anime_news_crawler#readme",
   "dependencies": {
+    "async": "^3.2.0",
     "axios": "^0.21.1",
-    "cheerio": "^1.0.0-rc.9"
+    "cheerio": "^1.0.0-rc.9",
+    "dotenv-flow": "^3.2.0",
+    "moment": "^2.29.1"
   }
 }
