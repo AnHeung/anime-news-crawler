@@ -16,7 +16,7 @@ const getAnimeCornerData = async (siteUrl) => {
     if ($) {
         const result = Array.from($('div.tt-post'))
             .map(data => {
-                const image = $(data).find('a img').attr('src')
+                const image = $(data).find('a img').attr('data-ezsrc');
                 const category = $(data).find('div.tt-post-cat').text();
                 const title = $(data).find('a.tt-post-title').text();
                 const url = $(data).find('a.tt-post-title').attr('href')
@@ -43,7 +43,6 @@ const getAllAniCornerDatas = async () => {
                         const siteUrl = `${ANIME_CORNER_BASE_URL}page/${pageNo}`
                         const aniCornerData = await getAnimeCornerData(siteUrl)
                         const siteArr = data ? [...data, ...aniCornerData] : [...aniCornerData]
-                        console.log(`pageNo : ${pageNo}`)
                         res(siteArr)
                     }, 300);
                 })
@@ -76,7 +75,7 @@ const getAniCornerDataToSelectDate = async (selectDate) => {
 
                 const date = dateToFormat($(result[j]).find('span.tt-post-date').text());
                 if (selectDate === date) {
-                    const image = $(result[j]).find('a img').attr('src')
+                    const image = $(result[j]).find('a img').attr('data-ezsrc')
                     const category = $(result[j]).find('div.tt-post-cat').text();
                     const title = $(result[j]).find('a.tt-post-title').text();
                     const url = $(result[j]).find('a.tt-post-title').attr('href')
