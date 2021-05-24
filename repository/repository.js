@@ -7,7 +7,10 @@ const saveAnimationNewsCrawlerData = async (data) => {
     const params = { data }
 
     return Axios.post(KUMA_API_NEWS_URL, params)
-        .then(true)
+        .then(data=>{
+            console.log('saveAnimationNewsCrawlerData 성공')
+            return true;
+        })
         .catch(e => {
             console.error(`saveAnimationNewsCrawlerData 통신 에러 ${e}`)
             return false
