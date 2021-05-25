@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "prod": "pm2 deploy prod"
   },
-  "repository": {
+  "repository": { 
     "type": "git",
     "url": "git+https://github.com/AnHeung/anime_news_crawler.git"
   },
@@ -16,7 +16,7 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AnHeung/anime_news_crawler/issues"
+    "url": "https://github.com/AnHeung/anime_news_crawler/issues" 
   },
   "homepage": "https://github.com/AnHeung/anime_news_crawler#readme",
   "dependencies": {

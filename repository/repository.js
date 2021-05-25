@@ -7,7 +7,7 @@ const saveAnimationNewsCrawlerData = async (data) => {
     const params = { data }
 
     return Axios.post(KUMA_API_NEWS_URL, params)
-        .then(data=>{
+        .then(data => {
             console.log('saveAnimationNewsCrawlerData 성공')
             return true;
         })
@@ -17,15 +17,18 @@ const saveAnimationNewsCrawlerData = async (data) => {
         })
 }
 
-const getAnimationNewsCrawlerData = async (page,viewCount) => {
+const getAnimationNewsCrawlerData = async (startDate, endDate) => {
 
-    const params = {page, viewCount}
+    const params = { startDate, endDate }
 
-    return Axios.get(KUMA_API_NEWS_URL, params)
-        .then(result => result.data)
+    return Axios.get(KUMA_API_NEWS_URL, { params })
+        .then(result => {
+            if (result.data.err) return [];
+            return result.data.data
+        })
         .catch(e => {
             console.error(`saveAnimationNewsCrawlerData 통신 에러 ${e}`)
-            return false
+            return []
         })
 }
 

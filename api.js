@@ -12,7 +12,17 @@ const crawlingTodayAnimationNews = async () => {
             console.log('crawlingTodayAnimationNews 업데이트 내용이 없습니다.')
             return false;
         }
-        return await saveAnimationNewsCrawlerData(todayUpdateNews)
+        const serverCrawlerNews = await getAnimationNewsCrawlerData(today, today)
+        const updateNews = todayUpdateNews.reduce((acc, todayNews) => {
+            const isDuplicate = serverCrawlerNews.find(serverNews => serverNews.date === todayNews.date && serverNews.title === todayNews.title)
+            if (!isDuplicate) acc.push(todayNews)
+            return acc;
+        }, [])
+        if (updateNews.length === 0) {
+            console.log('crawlingTodayAnimationNews 업데이트 내용이 없습니다.')
+            return false;
+        }
+        return await saveAnimationNewsCrawlerData(updateNews)
 
     } catch (e) {
         console.error(`crawlingTodayAnimationNews ${e}`)

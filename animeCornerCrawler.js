@@ -16,12 +16,12 @@ const getAnimeCornerData = async (siteUrl) => {
     if ($) {
         const result = Array.from($('div.tt-post'))
             .map(data => {
-                const image = $(data).find('a img').attr('data-ezsrc');
+                const image = $(data).find('a img').attr('data-ezsrc') ||$(data).find('a img').attr('src');
                 const category = $(data).find('div.tt-post-cat').text();
                 const title = $(data).find('a.tt-post-title').text();
                 const url = $(data).find('a.tt-post-title').attr('href')
                 const date = dateToFormat($(data).find('span.tt-post-date').text());
-                const summary = $(data).find('div.simple-text').text();
+                const summary = $(data).find('div.simple-text').text().trim();
                 return { image, category, title, date, summary, url }
             })
         return result;
@@ -75,11 +75,11 @@ const getAniCornerDataToSelectDate = async (selectDate) => {
 
                 const date = dateToFormat($(result[j]).find('span.tt-post-date').text());
                 if (selectDate === date) {
-                    const image = $(result[j]).find('a img').attr('data-ezsrc')
+                    const image = $(result[j]).find('a img').attr('data-ezsrc') ||$(result[j]).find('a img').attr('src');
                     const category = $(result[j]).find('div.tt-post-cat').text();
                     const title = $(result[j]).find('a.tt-post-title').text();
                     const url = $(result[j]).find('a.tt-post-title').attr('href')
-                    const summary = $(result[j]).find('div.simple-text').text();
+                    const summary = $(result[j]).find('div.simple-text').text().trim();
                     selectPageArr.push({ image, category, title, date, summary, url })
                     isSelectDate = true
                 }
