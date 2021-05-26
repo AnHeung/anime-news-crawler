@@ -59,13 +59,14 @@ const getAniCornerDataToSelectDate = async (selectDate) => {
 
     const lastPageNo = await getLastPage()
     const totalPageArr = getNoArr(lastPageNo)
-
+    const selectPageArr = [];
+    
     for (let i = 1; i < totalPageArr.length; i++) {
 
         const siteUrl = `${ANIME_CORNER_BASE_URL}page/${i}`
         const $ = await getAnimeCornerCheerio(siteUrl)
         let isSelectDate = true;
-        const selectPageArr = [];
+        
 
         if ($) {
             const result = Array.from($('div.tt-post'))
