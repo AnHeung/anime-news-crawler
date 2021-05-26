@@ -1,12 +1,12 @@
 const { getAllAniCornerDatas, getAnimeCornerData, getAniCornerDataToSelectDate } = require('./animeCornerCrawler')
-const { getToday } = require('./util/utils')
+const { getAmericaTodayTime } = require('./util/utils')
 const { saveAnimationNewsCrawlerData, getAnimationNewsCrawlerData } = require('./repository/repository')
 
 
 const crawlingTodayAnimationNews = async () => {
 
     try {
-        const today = getToday()
+        const today = getAmericaTodayTime()
         const todayUpdateNews = await getAniCornerDataToSelectDate(today)
         if (!todayUpdateNews || todayUpdateNews && todayUpdateNews.length === 0) {
             console.log('crawlingTodayAnimationNews 업데이트 내용이 없습니다.')

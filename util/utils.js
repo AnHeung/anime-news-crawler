@@ -1,13 +1,28 @@
 const moment = require('moment')
+const momentTz = require('moment-timezone')
 
 const getToday = () => {
     try {
         return moment(new Date()).format('yyyy-MM-DD')
     } catch (e) {
-        return moment(new Date())
+        const date = new Date();
+        const year = date.getFullYear();
+        const month = ("0" + (1 + date.getMonth())).slice(-2);
+        const day = ("0" + date.getDate()).slice(-2);
+
+        return year + "-" + month + "-" + day;
     }
 }
 
+const getAmericaTodayTime = () => {
+    try {
+        return moment().tz("America/Los_Angeles").format('yyyy-MM-DD');
+    } catch (e) {
+        return getToday()
+    }
+
+
+}
 
 const getNoArr = (no) => {
     const noArr = [];
@@ -32,6 +47,7 @@ const dateToFormat = (date) => {
 
 module.exports = {
     getToday: getToday,
+    getAmericaTodayTime: getAmericaTodayTime,
     getNoArr: getNoArr,
     dateToFormat: dateToFormat
 }
