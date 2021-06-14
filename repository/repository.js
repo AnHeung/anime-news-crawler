@@ -1,12 +1,12 @@
 const Axios = require('axios')
-const { KUMA_API_NEWS_URL } = require('../appConstant')
+const { NEWS_API_URL } = require('../appConstant')
 
 
 const saveAnimationNewsCrawlerData = async (data) => {
 
     const params = { data }
 
-    return Axios.post(KUMA_API_NEWS_URL, params)
+    return Axios.post(NEWS_API_URL, params)
         .then(data => {
             console.log('saveAnimationNewsCrawlerData 성공')
             return true;
@@ -21,7 +21,7 @@ const getAnimationNewsCrawlerData = async (startDate, endDate) => {
 
     const params = { startDate, endDate }
 
-    return Axios.get(KUMA_API_NEWS_URL, { params })
+    return Axios.get(NEWS_API_URL, { params })
         .then(result => {
             if (result.data.err) return [];
             return result.data.data

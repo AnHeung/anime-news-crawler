@@ -1,5 +1,5 @@
 const moment = require('moment')
-const momentTz = require('moment-timezone')
+require('moment-timezone')
 
 const getToday = () => {
     try {
@@ -20,8 +20,6 @@ const getAmericaTodayTime = () => {
     } catch (e) {
         return getToday()
     }
-
-
 }
 
 const getNoArr = (no) => {
