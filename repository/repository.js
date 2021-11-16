@@ -1,6 +1,6 @@
 const Axios = require('axios')
 const { NEWS_API_URL, API_KEY , API_KEY_VALUE } = require('../appConstant')
-Axios.defaults.headers[API_KEY] = API_KEY_VALUE
+Axios.defaults.headers.common[API_KEY] = API_KEY_VALUE
 
 const saveAnimationNewsCrawlerData = async (data) => {
 
