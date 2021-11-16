@@ -102,3 +102,9 @@ dist
 
 # TernJS port file
 .tern-port
+
+#환경변수
+.env
+.env.*
+.ecosystem.config.js
+.ecosystem.config.json

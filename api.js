@@ -43,6 +43,10 @@ const crawlingAllAnimationNews = async () => {
     }
 }
 
+(async()=>{
+    crawlingTodayAnimationNews()
+})()
+
 module.exports = {
     crawlingTodayAnimationNews: crawlingTodayAnimationNews,
     crawlingAllAnimationNews: crawlingAllAnimationNews
